@@ -1,13 +1,12 @@
 class Solution {
     public int solution(int n, int t) {
         int answer = 0;
-        long result = n;
+        answer = n;
         int hour = 1;
         while(hour <= t) {
-            result *= 2;
+            answer *= 2;
             hour++;
         }
-        answer = Long.valueOf(result).intValue();
         return answer;
     }
 }
