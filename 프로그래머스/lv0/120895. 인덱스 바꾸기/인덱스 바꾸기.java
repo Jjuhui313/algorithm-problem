@@ -2,9 +2,6 @@ class Solution {
     public String solution(String my_string, int num1, int num2) {
         String answer = "";
         char[] c = new char[my_string.length()];
-        
-        char c1 = ' ';
-        char c2 = ' ';
         char temp = ' ';
         
         for(int i = 0; i < my_string.length(); i++) {
