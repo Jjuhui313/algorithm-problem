@@ -6,10 +6,10 @@ class Solution {
         while(i < arr.length) {
             if(stk.isEmpty()) {
                 stk.add(arr[i]);
-            } else if(!stk.isEmpty()) {
+            } else {
                 if(stk.get(stk.size() - 1) == arr[i]) {
                     stk.remove(stk.size() - 1);
-                } else if(stk.get(stk.size() - 1) != arr[i]) {
+                } else {
                     stk.add(arr[i]);
                 }
             }
