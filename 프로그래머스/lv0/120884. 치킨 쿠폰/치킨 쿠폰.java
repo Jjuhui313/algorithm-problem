@@ -7,9 +7,7 @@ class Solution {
             answer += coupon / 10;
             coupon = coupon / 10 + coupon % 10;
         }
-        
-        
-        answer += coupon / 10;
+
         return answer;
     }
 }
