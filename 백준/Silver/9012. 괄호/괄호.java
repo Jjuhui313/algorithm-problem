@@ -1,4 +1,3 @@
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
@@ -7,17 +6,18 @@ import java.util.Stack;
 public class Main {
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        int T = Integer.parseInt(br.readLine());
-        while (T-- > 0) {
+        StringBuilder sb = new StringBuilder();
+        int N = Integer.parseInt(br.readLine());
+        while (N-- > 0) {
             String s = br.readLine();
             Stack<Character> stack = new Stack<>();
 
-            for(int i = 0; i < s.length(); i++) {
-                if(s.charAt(i) == '(') {
-                    stack.push(s.charAt(i));
-                } else{
-                    if(stack.empty()) {
-                        stack.push(s.charAt(i));
+            for (char c : s.toCharArray()) {
+                if (c == '(') {
+                    stack.push(c);
+                } else {
+                    if (stack.isEmpty()) {
+                        stack.push(c);
                         break;
                     } else {
                         stack.pop();
@@ -25,11 +25,13 @@ public class Main {
                 }
             }
 
-            if(stack.empty()) {
-                System.out.println("YES");
+            if (stack.isEmpty()) {
+                sb.append("YES").append("\n");
             } else {
-                System.out.println("NO");
+                sb.append("NO").append("\n");
             }
         }
+
+        System.out.println(sb);
     }
 }
