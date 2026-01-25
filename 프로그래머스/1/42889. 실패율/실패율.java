@@ -11,7 +11,6 @@ class Solution {
             }
         }        
 
-        // System.out.println(Arrays.toString(noclear));
         int player = stages.length;
         for(int i = 0; i < N; i++){
             fail[i]= (double)noclear[i] / player;
