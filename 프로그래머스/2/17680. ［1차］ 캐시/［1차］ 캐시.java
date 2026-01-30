@@ -1,0 +1,31 @@
+import java.util.LinkedList;
+import java.util.Deque;
+class Solution {
+    public int solution(int cacheSize, String[] cities) {
+        int answer = 0;
+        
+        if (cacheSize == 0) {
+            return cities.length * 5;
+        }
+        
+        Deque<String> cache = new LinkedList<>();
+
+        for (String city : cities) {
+            city = city.toLowerCase();
+
+            if (cache.contains(city)) {
+                cache.remove(city);
+                cache.addLast(city);
+                answer += 1;
+            } else {
+                if (cache.size() == cacheSize) {
+                    cache.pollFirst();
+                }
+                cache.addLast(city);
+                answer += 5;
+            }
+        }
+        
+        return answer;
+    }
+}
