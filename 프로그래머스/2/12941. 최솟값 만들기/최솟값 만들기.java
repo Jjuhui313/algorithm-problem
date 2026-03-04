@@ -11,7 +11,6 @@ class Solution
         for (int i = 0; i < A.length; i++) {
             answer += A[i] * B[B.length - 1- i];
         }
-        System.out.println("Hello Java");
 
         return answer;
     }
