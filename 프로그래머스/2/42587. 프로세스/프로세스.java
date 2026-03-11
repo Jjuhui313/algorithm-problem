@@ -1,37 +1,34 @@
 import java.util.Queue;
 import java.util.LinkedList;
-import java.util.Collections;
+import java.util.Arrays;
 
 class Solution {
     public int solution(int[] priorities, int location) {
         int answer = 0;
-        
-        Queue<int[]> queue = new LinkedList<>();
-        int[] count = new int[10];
-        
-        for (int i = 0; i < priorities.length; i++) {
-            queue.offer(new int[]{i, priorities[i]});
-            count[priorities[i]]++;
+        int locationInt = location;
+
+        Queue<Integer> que = new LinkedList<Integer>();
+        for(int i : priorities){
+            que.add(i);
         }
 
-        int currentMax = 9;
+        Arrays.sort(priorities);
+        int size = priorities.length - 1;
 
-        while (!queue.isEmpty()) {
-            while (count[currentMax] == 0) {
-                currentMax--;
-            }
 
-            int[] current = queue.poll();
 
-            if (current[1] == currentMax) {
+        while(!que.isEmpty()){
+            Integer i = que.poll();
+            if(i == priorities[size - answer]){
                 answer++;
-                count[currentMax]--;
-
-                if (current[0] == location) {
-                    return answer;
-                }
-            } else {
-                queue.offer(current);
+                locationInt--;
+                if(locationInt < 0)
+                    break;
+            }else{
+                que.add(i);
+                locationInt--;
+                if(locationInt < 0)
+                    locationInt = que.size()-1;
             }
         }
 
