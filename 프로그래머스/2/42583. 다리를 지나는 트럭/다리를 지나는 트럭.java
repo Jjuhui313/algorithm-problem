@@ -3,27 +3,25 @@ import java.util.LinkedList;
 
 class Solution {
     public int solution(int bridge_length, int weight, int[] truck_weights) {
-        Queue<Integer> bridge = new LinkedList<>();
-        int time = 0;
-        int sum = 0;
+        int answer = 0;
+        
+        int current = 0;
+        int size = truck_weights.length;
         int idx = 0;
+        
+        Queue<Integer> bridge = new LinkedList<>();
 
-        while (idx < truck_weights.length) {
-            time++;
-
-            if (bridge.size() == bridge_length) {
-                sum -= bridge.poll();
+        do {
+            if (bridge.size() == bridge_length)
+                current -= bridge.poll();
+            if (idx < size && current + truck_weights[idx] <= weight) {
+                bridge.add(truck_weights[idx]);
+                current += truck_weights[idx++];
             }
+            else bridge.add(0);
+            answer++;
+        } while(current != 0);
 
-            if (sum + truck_weights[idx] <= weight) {
-                bridge.offer(truck_weights[idx]);
-                sum += truck_weights[idx];
-                idx++;
-            } else {
-                bridge.offer(0);
-            }
-        }
-
-        return time + bridge_length;
+        return answer;
     }
 }
